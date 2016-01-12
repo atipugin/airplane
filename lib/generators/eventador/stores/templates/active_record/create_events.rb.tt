@@ -1,0 +1,12 @@
+class <%= migration_class_name %> < ActiveRecord::Migration
+  def change
+    create_table :eventador_events, id: false do |t|
+      t.uuid :id, primary_key: true
+      t.string :name, null: false
+      t.text :properties
+      t.datetime :occurred_at, null: false
+    end
+
+    add_index :eventador_events, :id
+  end
+end
