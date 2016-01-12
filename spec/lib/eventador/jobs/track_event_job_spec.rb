@@ -4,7 +4,11 @@ module Eventador
       include_context 'event'
 
       let(:params_dump) do
-        YAML.dump(name: name, properties: properties, options: options)
+        YAML.dump(
+          name: event_name,
+          properties: event_properties,
+          options: event_options
+        )
       end
 
       describe '#perform' do
@@ -15,7 +19,7 @@ module Eventador
 
         context 'when event has registered handlers' do
           before do
-            TestHandler.handle name
+            TestHandler.handle event_name
           end
 
           it 'enqueues event handling' do

@@ -4,7 +4,7 @@ module Eventador
 
     describe '#track_event' do
       it 'enqueues event tracking job' do
-        expect { subject.track_event(name) }
+        expect { subject.track_event(event_name) }
           .to enqueue_a(Eventador::Jobs::TrackEventJob)
       end
     end

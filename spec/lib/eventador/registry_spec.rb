@@ -4,18 +4,20 @@ module Eventador
 
     describe '#add' do
       it 'adds an item' do
-        expect { subject.add(klass, event_name, options) }
-          .to change(subject, :count).by(1)
+        expect do
+          subject.add(handler_klass, handler_event_name, handler_options)
+        end.to change(subject, :count).by(1)
       end
 
       context 'when item is already added' do
         before do
-          subject.add(klass, event_name, options)
+          subject.add(handler_klass, handler_event_name, handler_options)
         end
 
         it 'does not add it twice' do
-          expect { subject.add(klass, event_name, options) }
-            .not_to change(subject, :count)
+          expect do
+            subject.add(handler_klass, handler_event_name, handler_options)
+          end.not_to change(subject, :count)
         end
       end
     end
