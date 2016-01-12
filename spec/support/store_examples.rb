@@ -1,7 +1,5 @@
 RSpec.shared_examples_for 'a store' do
-  let(:name) { FFaker::Lorem.word }
-  let(:properties) { { str: FFaker::Lorem.word, int: rand(1..9) } }
-  let(:options) { { occurred_at: Time.now } }
+  include_context 'event'
 
   describe '#save_event' do
     it 'saves event to the store' do

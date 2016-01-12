@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 
+gem 'activejob'
 gem 'activerecord'
 gem 'activeuuid'
 gem 'ffaker'
 gem 'pry'
 gem 'rspec'
+gem 'rspec-activejob'
 gem 'rubocop'
 gem 'rubocop-rspec'
 gem 'sqlite3'
