@@ -1,8 +1,11 @@
 require 'ffaker'
 require 'rspec/active_job'
+require 'simplecov'
 
 require 'active_record'
 require 'activeuuid'
+
+SimpleCov.start
 
 require 'eventador'
 
