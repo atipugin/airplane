@@ -4,8 +4,10 @@ module Eventador
       include_context 'event'
 
       let(:event_id) { Eventador.store.save_event(name, properties, options) }
-      let(:handler_dump) { YAML.dump(Eventador.registry[name][0]) }
       let(:handler_klass) { TestHandler }
+      let(:params_dump) do
+        YAML.dump(event_id: event_id, handler: Eventador.registry[name][0])
+      end
 
       before do
         handler_klass.handle name
@@ -13,8 +15,7 @@ module Eventador
 
       describe '#perform' do
         it 'runs handler' do
-          allow_any_instance_of(handler_klass).to receive(:run)
-          subject.perform(event_id, handler_dump)
+          # ...
         end
       end
     end
