@@ -1,4 +1,5 @@
 require 'active_job'
+require 'yaml'
 
 require 'eventador/configuration'
 require 'eventador/stores'

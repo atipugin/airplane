@@ -20,7 +20,7 @@ module Eventador
     private
 
     def default_options
-      {}
+      { delay: 0 }
     end
   end
 
