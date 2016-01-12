@@ -4,9 +4,9 @@ require 'rspec/active_job'
 require 'active_record'
 require 'activeuuid'
 
-Dir[File.expand_path('../support/**/*.rb', __FILE__)].each { |f| require f }
-
 require 'eventador'
+
+Dir[File.expand_path('../support/**/*.rb', __FILE__)].each { |f| require f }
 
 ActiveJob::Base.queue_adapter = :test
 
