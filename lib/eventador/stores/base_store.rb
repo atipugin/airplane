@@ -9,6 +9,10 @@ module Eventador
         not_implemented!
       end
 
+      def find_subsequent_events(*)
+        not_implemented!
+      end
+
       private
 
       def not_implemented!

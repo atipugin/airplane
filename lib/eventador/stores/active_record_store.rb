@@ -21,6 +21,13 @@ module Eventador
         model.find(id).attributes
       end
 
+      def find_subsequent_events(event)
+        model
+          .where('occurred_at > ?', event['occurred_at'])
+          .order('occurred_at ASC')
+          .map(&:attributes)
+      end
+
       private
 
       def model
