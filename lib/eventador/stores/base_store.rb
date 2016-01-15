@@ -22,6 +22,10 @@ module Eventador
       def generate_event_id
         SecureRandom.uuid
       end
+
+      def prepare_event(hsh)
+        hsh.deep_stringify_keys
+      end
     end
   end
 end

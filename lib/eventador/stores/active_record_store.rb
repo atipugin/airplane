@@ -18,7 +18,7 @@ module Eventador
       end
 
       def find_event(id)
-        model.find(id).attributes
+        prepare_event(model.find(id).attributes)
       end
 
       def find_subsequent_events(event)
@@ -26,6 +26,7 @@ module Eventador
           .where('occurred_at > ?', event['occurred_at'])
           .order('occurred_at ASC')
           .map(&:attributes)
+          .map { |e| prepare_event(e) }
       end
 
       private

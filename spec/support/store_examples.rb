@@ -25,12 +25,17 @@ RSpec.shared_examples_for 'a store' do
     end
 
     it 'returns valid properties' do
-      expect(subject.find_event(id)['properties']).to eq(event_properties)
+      expect(subject.find_event(id)['properties'])
+        .to eq(event_properties.stringify_keys)
     end
 
     it 'returns valid time of occurrance' do
       expect(subject.find_event(id)['occurred_at'])
         .to eq(event_options[:occurred_at])
+    end
+
+    it 'returns hash with string keys' do
+      expect(subject.find_event(id).keys.sample).to be_a(String)
     end
   end
 
