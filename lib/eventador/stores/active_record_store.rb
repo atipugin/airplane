@@ -25,8 +25,7 @@ module Eventador
         model
           .where('occurred_at > ?', event['occurred_at'])
           .order('occurred_at ASC')
-          .map(&:attributes)
-          .map { |e| prepare_event(e) }
+          .map { |e| prepare_event(e.attributes) }
       end
 
       private
