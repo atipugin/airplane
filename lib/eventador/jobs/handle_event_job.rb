@@ -15,20 +15,35 @@ module Eventador
 
       def conditions_satisfied?(handler, event)
         subsequent_events =
-          Eventador.store.find_subsequent_events(event).map { |e| e['name'] }
+          apply_constraints(
+            handler,
+            event,
+            Eventador.store.find_subsequent_events(event)
+          )
 
         if_satisfied?(handler, subsequent_events) &&
           unless_satisfied?(handler, subsequent_events)
       end
 
+      def apply_constraints(handler, event, subsequent_events)
+        return subsequent_events unless handler[:constraints]
+
+        constraints = Array(handler[:constraints]).map(&:to_s)
+        subsequent_events.select do |item|
+          constraints.all? do |constraint|
+            item['properties'][constraint] == event['properties'][constraint]
+          end
+        end
+      end
+
       def if_satisfied?(handler, subsequent_events)
         return true unless handler[:if]
-        subsequent_events.include?(handler[:if].to_s)
+        subsequent_events.map { |e| e['name'] }.include?(handler[:if].to_s)
       end
 
       def unless_satisfied?(handler, subsequent_events)
         return true unless handler[:unless]
-        !subsequent_events.include?(handler[:unless].to_s)
+        !subsequent_events.map { |e| e['name'] }.include?(handler[:unless].to_s)
       end
     end
   end

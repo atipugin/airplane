@@ -10,7 +10,7 @@ module Eventador
       let(:handler) { Eventador.registry[event_name][0] }
       let(:params_dump) { YAML.dump(event_id: event_id, handler: handler) }
       let(:subsequent_events) do
-        Eventador.store.find_subsequent_events(event).map { |e| e['name'] }
+        Eventador.store.find_subsequent_events(event)
       end
 
       before do
@@ -75,6 +75,27 @@ module Eventador
             expect(subject.send(:unless_satisfied?, handler, subsequent_events))
               .to be(false)
           end
+        end
+      end
+
+      describe '#apply_constraints' do
+        let(:event_properties) { { user_id: rand(1..10) } }
+        let(:handler_options) { { constraints: :user_id } }
+
+        before do
+          Eventador.store.save_event(
+            event_name,
+            event_properties,
+            event_options.merge(occurred_at: 1.minute.from_now)
+          )
+        end
+
+        it 'returns suitable events' do
+          expect(
+            subject
+              .send(:apply_constraints, handler, event, subsequent_events)
+              .sample['properties']
+          ).to include('user_id' => event_properties[:user_id])
         end
       end
     end
