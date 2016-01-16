@@ -1,6 +1,7 @@
 require 'ffaker'
 require 'rspec/active_job'
 require 'simplecov'
+require 'database_cleaner'
 
 require 'active_record'
 require 'activeuuid'
@@ -15,4 +16,15 @@ ActiveJob::Base.queue_adapter = :test
 
 RSpec.configure do |config|
   config.include RSpec::ActiveJob
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
 end
