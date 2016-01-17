@@ -7,6 +7,8 @@ ActiveRecord::Schema.define do
     t.text :properties
     t.datetime :occurred_at, null: false
   end
+
+  add_index :eventador_events, :id
 end
 
 module Eventador

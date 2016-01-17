@@ -1,9 +1,9 @@
 RSpec.shared_context 'event' do
   let(:event_name) { FFaker::Lorem.word }
-  let(:event_properties) { { str: FFaker::Lorem.word, int: rand(1..9) } }
-  let(:event_options) { { occurred_at: Time.now } }
-  let(:event_id) do
-    Eventador.store.save_event(event_name, event_properties, event_options)
+  let(:event_properties) { {} }
+  let(:event_attributes) do
+    { name: event_name, properties: event_properties, occurred_at: Time.now }
   end
+  let(:event_id) { Eventador.store.save_event(event_attributes) }
   let(:event) { Eventador.store.find_event(event_id) }
 end

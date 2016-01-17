@@ -4,23 +4,11 @@ module Eventador
       include_context 'event'
       include_context 'handler'
 
-      let(:event_id) do
-        Eventador.store.save_event(event_name, event_properties, event_options)
-      end
-      let(:handler) { Eventador.registry[event_name][0] }
-      let(:params_dump) { YAML.dump(event_id: event_id, handler: handler) }
-      let(:subsequent_events) do
-        Eventador.store.find_subsequent_events(event)
-      end
+      let(:handler) { Eventador.registry[event_name].sample }
+      let(:subsequent_events) { Eventador.store.find_subsequent_events(event) }
 
       before do
-        handler_klass.handle event_name, handler_options
-      end
-
-      describe '#perform' do
-        it 'runs handler' do
-          # ...
-        end
+        handler_class.handle event_name, handler_options
       end
 
       describe '#conditions_satisfied?' do
@@ -41,9 +29,10 @@ module Eventador
         context 'when expected event is occurred' do
           before do
             Eventador.store.save_event(
-              handler_options[:if],
-              event_properties,
-              event_options.merge(occurred_at: 1.minute.from_now)
+              event_attributes.merge(
+                name: handler_options[:if],
+                occurred_at: 1.minute.from_now
+              )
             )
           end
 
@@ -65,9 +54,10 @@ module Eventador
         context 'when unexpected event is occurred' do
           before do
             Eventador.store.save_event(
-              handler_options[:unless],
-              event_properties,
-              event_options.merge(occurred_at: 1.minute.from_now)
+              event_attributes.merge(
+                name: handler_options[:unless],
+                occurred_at: 1.minute.from_now
+              )
             )
           end
 
@@ -84,9 +74,7 @@ module Eventador
 
         before do
           Eventador.store.save_event(
-            event_name,
-            event_properties,
-            event_options.merge(occurred_at: 1.minute.from_now)
+            event_attributes.merge(occurred_at: 1.minute.from_now)
           )
         end
 

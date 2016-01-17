@@ -2,14 +2,9 @@ module Eventador
   module Jobs
     RSpec.describe TrackEventJob do
       include_context 'event'
+      include_context 'handler'
 
-      let(:params_dump) do
-        YAML.dump(
-          name: event_name,
-          properties: event_properties,
-          options: event_options
-        )
-      end
+      let(:params_dump) { YAML.dump(event_attributes) }
 
       describe '#perform' do
         it 'invokes store to save event' do
@@ -19,7 +14,7 @@ module Eventador
 
         context 'when event has registered handlers' do
           before do
-            TestHandler.handle event_name
+            handler_class.handle event_name
           end
 
           it 'enqueues event handling' do
