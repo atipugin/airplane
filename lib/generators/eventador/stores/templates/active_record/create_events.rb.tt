@@ -3,7 +3,7 @@ class <%= migration_class_name %> < ActiveRecord::Migration
     create_table :eventador_events, id: false do |t|
       t.uuid :id, primary_key: true
       t.string :name, null: false
-      t.text :properties
+      t.<%= postgresql? ? (jsonb? ? 'jsonb' : 'json') : 'text' %> :properties
       t.datetime :occurred_at, null: false
       t.references :target, polymorphic: true
     end

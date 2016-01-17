@@ -16,7 +16,21 @@ module Eventador
         end
 
         def copy_models
-          copy_file 'event.rb', 'app/models/eventador/event.rb'
+          template 'event.rb', 'app/models/eventador/event.rb'
+        end
+
+        def jsonb?
+          return false unless postgresql?
+
+          ActiveRecord::Base
+            .connection
+            .execute('SELECT version();')[0]['version']
+            .start_with?('PostgreSQL 9.4')
+        end
+
+        def postgresql?
+          config = ActiveRecord::Base.configurations[Rails.env]
+          config && config['adapter'] == 'postgresql'
         end
       end
     end

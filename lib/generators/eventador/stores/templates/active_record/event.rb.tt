@@ -1,8 +1,8 @@
 module Eventador
   class Event < ActiveRecord::Base
-    self.table_name = 'eventador_events'
+    self.table_name = 'eventador_events'<% unless postgresql? %>
 
-    serialize :properties
+    serialize :properties<% end %>
 
     belongs_to :target, polymorphic: true
 
