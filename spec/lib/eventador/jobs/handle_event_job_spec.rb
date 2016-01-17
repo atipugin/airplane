@@ -6,6 +6,7 @@ module Eventador
 
       let(:handler) { Eventador.registry[event_name].sample }
       let(:subsequent_events) { Eventador.store.find_subsequent_events(event) }
+      let(:params) { { event_id: event_id, handler: handler } }
 
       before do
         handler_class.handle event_name, handler_options
@@ -84,6 +85,22 @@ module Eventador
               .send(:apply_constraints, handler, event, subsequent_events)
               .sample['properties']
           ).to include('user_id' => event_properties[:user_id])
+        end
+      end
+
+      describe '#enqueue_repeat' do
+        it 'does not enqueue itself again' do
+          expect { subject.send(:enqueue_repeat, handler, params) }
+            .not_to enqueue_a(described_class)
+        end
+
+        context 'when amount of handler repeats is greater than one' do
+          let(:handler_options) { { repeats: 2 } }
+
+          it 'enqueues itself again' do
+            expect { subject.send(:enqueue_repeat, handler, params) }
+              .to enqueue_a(described_class)
+          end
         end
       end
     end

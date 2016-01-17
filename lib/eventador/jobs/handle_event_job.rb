@@ -9,6 +9,7 @@ module Eventador
         return unless conditions_satisfied?(handler, event)
 
         handler[:klass].new.run(event)
+        enqueue_repeat(handler, params)
       end
 
       private
@@ -44,6 +45,17 @@ module Eventador
       def unless_satisfied?(handler, subsequent_events)
         return true unless handler[:unless]
         !subsequent_events.map { |e| e['name'] }.include?(handler[:unless].to_s)
+      end
+
+      def enqueue_repeat(handler, params)
+        repeat = params[:repeat].to_i.next
+
+        return if repeat >= handler[:repeats]
+
+        self
+          .class
+          .set(wait: handler[:delay])
+          .perform_later(YAML.dump(params.merge(repeat: repeat)))
       end
     end
   end
