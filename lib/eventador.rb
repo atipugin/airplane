@@ -8,6 +8,7 @@ require 'eventador/jobs'
 require 'eventador/handler'
 require 'eventador/registry'
 require 'eventador/tracker'
+require 'eventador/util'
 
 module Eventador
 end
