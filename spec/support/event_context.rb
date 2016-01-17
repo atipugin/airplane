@@ -5,6 +5,6 @@ RSpec.shared_context 'event' do
   let(:event_attributes) do
     { name: event_name, properties: event_properties, occurred_at: Time.now }
   end
-  let(:event_id) { Eventador.store.save_event(event_attributes) }
-  let(:event) { Eventador.store.find_event(event_id) }
+  let(:event_id) { Samovar.store.save_event(event_attributes) }
+  let(:event) { Samovar.store.find_event(event_id) }
 end

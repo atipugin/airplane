@@ -1,0 +1,12 @@
+module Samovar
+  class Event < ActiveRecord::Base
+    self.table_name = 'samovar_events'<% unless postgresql? %>
+
+    serialize :properties<% end %>
+
+    belongs_to :target, polymorphic: true
+
+    validates :name, presence: true
+    validates :occurred_at, presence: true
+  end
+end

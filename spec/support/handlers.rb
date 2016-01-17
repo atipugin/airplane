@@ -1,5 +1,5 @@
 class TestHandler
-  include Eventador::Handler
+  include Samovar::Handler
 
   def run(event)
     # Does nothing ;)
