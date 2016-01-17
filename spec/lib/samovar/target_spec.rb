@@ -4,8 +4,6 @@ module Samovar
 
     include_context 'event'
 
-    subject { Class.new { include Samovar::Target } }
-
     describe '#track_event' do
       it 'invokes Tracker' do
         expect(Samovar.tracker).to receive(:track_event)
