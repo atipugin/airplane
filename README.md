@@ -1,6 +1,8 @@
 # Streamline
 
-Simplify event-based workflow in your app.
+**Important! It's still early proof-of-concept. Use it on your own risk ;)**
+
+Streamline allows you to organize event-based behavior of your app way more simpler.
 
 [![Gem Version](https://badge.fury.io/rb/streamline.svg)](https://badge.fury.io/rb/streamline)
 [![Code Climate](https://codeclimate.com/github/atipugin/streamline/badges/gpa.svg)](https://codeclimate.com/github/atipugin/streamline)
