@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors = ['Alexander Tipugin']
 
   spec.files = `git ls-files -z`.split("\x0")
-  spec.test_files = spec.files.grep(/^spec\//)
+  spec.test_files = spec.files.grep(%r(^spec\/))
   spec.require_paths = %w(lib)
 
   spec.add_dependency 'activejob'

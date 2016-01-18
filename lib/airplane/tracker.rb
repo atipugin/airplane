@@ -12,7 +12,7 @@ module Airplane
     private
 
     def options
-      { occurred_at: Time.now }
+      { occurred_at: Time.zone.now }
     end
 
     def extract_target_params(target)
