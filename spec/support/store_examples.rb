@@ -26,9 +26,10 @@ RSpec.shared_examples_for 'a store' do
         .to eq(event_attributes[:properties])
     end
 
+    # `be_within` matcher is used here because of issue with travis ci
     it 'returns valid time of occurrance' do
       expect(subject.find_event(event_id)['occurred_at'])
-        .to eq(event_attributes[:occurred_at])
+        .to be_within(1.second).of(event_attributes[:occurred_at])
     end
 
     it 'returns hash with string keys' do
