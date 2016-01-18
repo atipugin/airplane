@@ -1,4 +1,4 @@
-module Samovar
+module Airplane
   module Jobs
     RSpec.describe TrackEventJob do
       include_context 'event'
@@ -8,7 +8,7 @@ module Samovar
 
       describe '#perform' do
         it 'invokes store to save event' do
-          expect(Samovar.store).to receive(:save_event)
+          expect(Airplane.store).to receive(:save_event)
           subject.perform(params_dump)
         end
 
@@ -19,7 +19,7 @@ module Samovar
 
           it 'enqueues event handling' do
             expect { subject.perform(params_dump) }
-              .to enqueue_a(Samovar::Jobs::HandleEventJob)
+              .to enqueue_a(Airplane::Jobs::HandleEventJob)
           end
         end
       end

@@ -1,7 +1,7 @@
-require 'samovar/stores/base_store'
-require 'samovar/stores/active_record_store' if defined?(ActiveRecord)
+require 'airplane/stores/base_store'
+require 'airplane/stores/active_record_store' if defined?(ActiveRecord)
 
-module Samovar
+module Airplane
   def store
     @store ||= begin
       klass = case configuration.store

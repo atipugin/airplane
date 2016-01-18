@@ -1,3 +1,3 @@
-module Samovar
+module Airplane
   VERSION = '0.1.0'
 end

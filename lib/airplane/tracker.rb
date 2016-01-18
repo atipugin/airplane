@@ -1,4 +1,4 @@
-module Samovar
+module Airplane
   class Tracker
     def track_event(target, name, properties = {})
       params =

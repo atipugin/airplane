@@ -1,4 +1,4 @@
-module Samovar
+module Airplane
   class Registry
     extend Forwardable
 

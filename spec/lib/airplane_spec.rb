@@ -1,4 +1,4 @@
-RSpec.describe Samovar do
+RSpec.describe Airplane do
   describe '.configure' do
     let(:new_value) { FFaker::Lorem.word }
     let!(:old_value) { described_class.configuration.store }
@@ -15,7 +15,7 @@ RSpec.describe Samovar do
 
   describe '.tracker' do
     it 'returns instance of Tracker' do
-      expect(described_class.tracker).to be_a(Samovar::Tracker)
+      expect(described_class.tracker).to be_a(Airplane::Tracker)
     end
   end
 end

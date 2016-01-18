@@ -1,7 +1,7 @@
-module Samovar
+module Airplane
   module Jobs
     class BaseJob < ActiveJob::Base
-      queue_as :samovar
+      queue_as :airplane
     end
   end
 end

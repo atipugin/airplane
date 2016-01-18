@@ -1,11 +1,11 @@
-module Samovar
+module Airplane
   module Jobs
     RSpec.describe HandleEventJob do
       include_context 'event'
       include_context 'handler'
 
-      let(:handler) { Samovar.registry[event_name].sample }
-      let(:subsequent_events) { Samovar.store.find_subsequent_events(event) }
+      let(:handler) { Airplane.registry[event_name].sample }
+      let(:subsequent_events) { Airplane.store.find_subsequent_events(event) }
       let(:params) { { event_id: event_id, handler: handler } }
 
       before do
@@ -29,7 +29,7 @@ module Samovar
 
         context 'when expected event is occurred' do
           before do
-            Samovar.store.save_event(
+            Airplane.store.save_event(
               event_attributes.merge(
                 name: handler_options[:if],
                 occurred_at: 1.minute.from_now
@@ -54,7 +54,7 @@ module Samovar
 
         context 'when unexpected event is occurred' do
           before do
-            Samovar.store.save_event(
+            Airplane.store.save_event(
               event_attributes.merge(
                 name: handler_options[:unless],
                 occurred_at: 1.minute.from_now
@@ -74,7 +74,7 @@ module Samovar
         let(:handler_options) { { constraints: :user_id } }
 
         before do
-          Samovar.store.save_event(
+          Airplane.store.save_event(
             event_attributes.merge(occurred_at: 1.minute.from_now)
           )
         end

@@ -1,4 +1,4 @@
-module Samovar
+module Airplane
   module Stores
     RSpec.describe BaseStore do
       %w(save_event find_event find_subsequent_events).each do |method_name|

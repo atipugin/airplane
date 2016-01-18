@@ -1,4 +1,4 @@
-module Samovar
+module Airplane
   module Stores
     class ActiveRecordStore < BaseStore
       extend Forwardable
@@ -27,7 +27,7 @@ module Samovar
       private
 
       def model
-        Samovar::Event
+        Airplane::Event
       end
     end
   end

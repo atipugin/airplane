@@ -1,4 +1,4 @@
-module Samovar
+module Airplane
   module Stores
     class BaseStore
       def save_event(*)

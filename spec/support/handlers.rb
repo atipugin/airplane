@@ -1,5 +1,5 @@
 class TestHandler
-  include Samovar::Handler
+  include Airplane::Handler
 
   def run(event)
     # Does nothing ;)

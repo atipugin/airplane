@@ -1,6 +1,6 @@
-module Samovar
+module Airplane
   class Event < ActiveRecord::Base
-    self.table_name = 'samovar_events'<% unless postgresql? %>
+    self.table_name = 'airplane_events'<% unless postgresql? %>
 
     serialize :properties<% end %>
 

@@ -1,11 +1,11 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'samovar/version'
+require 'airplane/version'
 
 Gem::Specification.new do |spec|
-  spec.name = 'samovar'
-  spec.version = Samovar::VERSION
+  spec.name = 'airplane'
+  spec.version = Airplane::VERSION
   spec.summary = '...'
   spec.authors = ['Alexander Tipugin']
 

@@ -1,10 +1,10 @@
-module Samovar
+module Airplane
   module Jobs
     class HandleEventJob < BaseJob
       def perform(params_dump)
         params = YAML.load(params_dump)
         handler = params[:handler]
-        event = Samovar.store.find_event(params[:event_id])
+        event = Airplane.store.find_event(params[:event_id])
 
         return unless conditions_satisfied?(handler, event)
 
@@ -19,7 +19,7 @@ module Samovar
           apply_constraints(
             handler,
             event,
-            Samovar.store.find_subsequent_events(event)
+            Airplane.store.find_subsequent_events(event)
           )
 
         if_satisfied?(handler, subsequent_events) &&

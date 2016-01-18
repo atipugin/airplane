@@ -1,4 +1,4 @@
-module Samovar
+module Airplane
   RSpec.describe Target do
     include described_class
 
@@ -6,7 +6,7 @@ module Samovar
 
     describe '#track_event' do
       it 'invokes Tracker' do
-        expect(Samovar.tracker).to receive(:track_event)
+        expect(Airplane.tracker).to receive(:track_event)
         track_event(event_name)
       end
     end

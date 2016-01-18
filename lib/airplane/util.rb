@@ -1,4 +1,4 @@
-module Samovar
+module Airplane
   module Util
     def extract_object_type(object)
       case object

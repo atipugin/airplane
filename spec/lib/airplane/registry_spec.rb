@@ -1,4 +1,4 @@
-module Samovar
+module Airplane
   RSpec.describe Registry do
     include_context 'handler'
 

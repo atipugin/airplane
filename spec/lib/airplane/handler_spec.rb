@@ -1,4 +1,4 @@
-module Samovar
+module Airplane
   RSpec.describe Handler do
     include_context 'handler'
 
@@ -8,7 +8,7 @@ module Samovar
 
     describe '.handle' do
       it 'adds handler to the registry' do
-        expect(Samovar.registry).to receive(:add)
+        expect(Airplane.registry).to receive(:add)
         handler_class.handle(handler_event_name, handler_options)
       end
     end

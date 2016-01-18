@@ -1,4 +1,4 @@
-module Samovar
+module Airplane
   module Handler
     def self.included(base)
       base.extend(ClassMethods)
@@ -6,7 +6,7 @@ module Samovar
 
     module ClassMethods
       def handle(event_name, options = {})
-        Samovar.registry.add(self, event_name, options)
+        Airplane.registry.add(self, event_name, options)
       end
     end
   end

@@ -8,7 +8,7 @@ require 'activeuuid'
 
 SimpleCov.start
 
-require 'samovar'
+require 'airplane'
 
 Dir[File.expand_path('../support/**/*.rb', __FILE__)].each { |f| require f }
 

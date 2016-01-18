@@ -1,4 +1,4 @@
-module Samovar
+module Airplane
   class Configuration
     attr_accessor :store
 

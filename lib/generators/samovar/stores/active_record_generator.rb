@@ -1,4 +1,4 @@
-module Samovar
+module Airplane
   module Generators
     module Stores
       class ActiveRecordGenerator < Rails::Generators::Base
@@ -12,11 +12,11 @@ module Samovar
 
         def copy_migrations
           migration_template 'create_events.rb',
-                             'db/migrate/create_samovar_events.rb'
+                             'db/migrate/create_airplane_events.rb'
         end
 
         def copy_models
-          template 'event.rb', 'app/models/samovar/event.rb'
+          template 'event.rb', 'app/models/airplane/event.rb'
         end
 
         def jsonb?
