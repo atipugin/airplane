@@ -7,6 +7,6 @@ RSpec.shared_context 'event' do
       properties: event_properties,
       occurred_at: Time.zone.now }
   end
-  let(:event_id) { Airplane.store.save_event(event_attributes) }
-  let(:event) { Airplane.store.find_event(event_id) }
+  let(:event_id) { Streamline.store.save_event(event_attributes) }
+  let(:event) { Streamline.store.find_event(event_id) }
 end

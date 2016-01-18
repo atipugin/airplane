@@ -1,7 +1,7 @@
 ActiveRecord::Base.establish_connection adapter: 'sqlite3', database: ':memory:'
 
 ActiveRecord::Schema.define do
-  create_table :airplane_events, id: false do |t|
+  create_table :streamline_events, id: false do |t|
     t.uuid :id, primary_key: true
     t.string :name, null: false
     t.text :properties
@@ -9,13 +9,13 @@ ActiveRecord::Schema.define do
     t.references :target, polymorphic: true
   end
 
-  add_index :airplane_events, :id
-  add_index :airplane_events, [:target_type, :target_id]
+  add_index :streamline_events, :id
+  add_index :streamline_events, [:target_type, :target_id]
 end
 
-module Airplane
+module Streamline
   class Event < ActiveRecord::Base
-    self.table_name = 'airplane_events'
+    self.table_name = 'streamline_events'
 
     serialize :properties
 

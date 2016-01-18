@@ -1,5 +1,5 @@
 class TestHandler
-  include Airplane::Handler
+  include Streamline::Handler
 
   def run(event)
     # Does nothing ;)

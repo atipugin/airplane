@@ -1,0 +1,14 @@
+class <%= migration_class_name %> < ActiveRecord::Migration
+  def change
+    create_table :streamline_events, id: false do |t|
+      t.uuid :id, primary_key: true
+      t.string :name, null: false
+      t.<%= postgresql? ? (jsonb? ? 'jsonb' : 'json') : 'text' %> :properties
+      t.datetime :occurred_at, null: false
+      t.references :target, polymorphic: true
+    end
+
+    add_index :streamline_events, :id
+    add_index :streamline_events, [:target_type, :target_id]
+  end
+end
