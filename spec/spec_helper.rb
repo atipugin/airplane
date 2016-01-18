@@ -13,6 +13,7 @@ require 'airplane'
 Dir[File.expand_path('../support/**/*.rb', __FILE__)].each { |f| require f }
 
 ActiveJob::Base.queue_adapter = :test
+Time.zone = 'UTC'
 
 RSpec.configure do |config|
   config.include RSpec::ActiveJob
