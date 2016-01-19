@@ -1,4 +1,3 @@
-require 'ffaker'
 require 'rspec/active_job'
 require 'simplecov'
 require 'database_cleaner'

@@ -1,5 +1,5 @@
 module Helpers
   def random_word
-    [FFaker::Lorem.word, Time.now.to_i, rand(1..9)].join('_')
+    (0..16).map { ('a'..'z').to_a[rand(26)] }.join
   end
 end
