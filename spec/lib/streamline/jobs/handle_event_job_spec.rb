@@ -101,6 +101,32 @@ module Streamline
           end
         end
       end
+
+      describe '#apply_constraints' do
+        let(:prop_name) { random_word }
+        let(:event_properties) { { prop_name => random_word } }
+        let(:handler_options) { { constraints: prop_name } }
+
+        before do
+          3.times do
+            Streamline.store.save_event(
+              event_attributes.merge(
+                name: event_name,
+                occurred_at: 1.hour.from_now
+              )
+            )
+          end
+        end
+
+        it 'returns only suitable events' do
+          expected_hsh = {
+            'properties' => { prop_name => event_properties[prop_name] }
+          }
+          expect(
+            subject.send(:apply_constraints, handler, event, subsequent_events)
+          ).to all(include(expected_hsh))
+        end
+      end
     end
   end
 end
