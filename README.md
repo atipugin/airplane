@@ -56,7 +56,7 @@ You're almost done! It's time to set up handlers and track some events.
 
 ## Event tracking
 
-# ...
+...
 
 ## Data stores
 
