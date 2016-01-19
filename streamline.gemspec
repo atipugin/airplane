@@ -8,6 +8,8 @@ Gem::Specification.new do |spec|
   spec.version = Streamline::VERSION
   spec.summary = 'Simplify event-based behavior in your app'
   spec.authors = ['Alexander Tipugin']
+  spec.email = 'atipugin@gmail.com'
+  spec.homepage = 'https://github.com/atipugin/streamline'
 
   spec.files = `git ls-files -z`.split("\x0")
   spec.test_files = spec.files.grep(%r{^spec\/})
