@@ -1,6 +1,6 @@
 RSpec.describe Streamline do
   describe '.configure' do
-    let(:new_value) { FFaker::Lorem.word }
+    let(:new_value) { random_word }
     let!(:old_value) { described_class.configuration.store }
 
     it 'allows to change config params' do

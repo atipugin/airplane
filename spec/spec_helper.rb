@@ -16,6 +16,7 @@ Time.zone = 'UTC'
 
 RSpec.configure do |config|
   config.include RSpec::ActiveJob
+  config.include Helpers
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

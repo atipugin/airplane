@@ -1,5 +1,5 @@
 RSpec.shared_context 'event' do
-  let(:event_name) { FFaker::Lorem.word }
+  let(:event_name) { random_word }
   let(:event_properties) { {} }
   let(:event_target) { OpenStruct.new(id: rand(1..9)) }
   let(:event_attributes) do
