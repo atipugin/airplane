@@ -6,12 +6,14 @@ require 'streamline/version'
 Gem::Specification.new do |spec|
   spec.name = 'streamline'
   spec.version = Streamline::VERSION
-  spec.summary = '...'
+  spec.summary = 'Simplify event-based behavior in your app'
   spec.authors = ['Alexander Tipugin']
 
   spec.files = `git ls-files -z`.split("\x0")
   spec.test_files = spec.files.grep(%r{^spec\/})
   spec.require_paths = %w(lib)
+
+  spec.required_ruby_version = '>= 1.9.3'
 
   spec.add_dependency 'activejob'
 
