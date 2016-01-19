@@ -1,6 +1,5 @@
 require 'active_job'
 require 'yaml'
-require 'active_support/core_ext/hash/keys'
 
 require 'streamline/configuration'
 require 'streamline/stores'

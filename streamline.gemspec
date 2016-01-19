@@ -14,7 +14,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = %w(lib)
 
   spec.add_dependency 'activejob'
-  spec.add_dependency 'activesupport'
 
   spec.add_development_dependency 'activerecord'
   spec.add_development_dependency 'activeuuid'
