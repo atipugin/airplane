@@ -19,10 +19,6 @@ module Streamline
         fail NotImplementedError, 'You need to implement this method first'
       end
 
-      def generate_event_id
-        SecureRandom.uuid
-      end
-
       def prepare_event(hsh)
         hsh.deep_stringify_keys
       end

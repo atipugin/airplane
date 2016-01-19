@@ -8,7 +8,7 @@ RSpec.shared_examples_for 'a store' do
     end
 
     it 'returns id of saved event' do
-      expect(subject.save_event(event_attributes)).to be_a(String)
+      expect(subject.save_event(event_attributes)).to be
     end
   end
 

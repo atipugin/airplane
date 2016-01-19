@@ -6,11 +6,7 @@ module Streamline
       def_delegators :model, :count
 
       def save_event(attributes)
-        event = model.new(attributes)
-        event.id = generate_event_id
-        event.save!
-
-        event.id
+        model.create!(attributes).id
       end
 
       def find_event(id)

@@ -4,7 +4,6 @@ require 'simplecov'
 require 'database_cleaner'
 
 require 'active_record'
-require 'activeuuid'
 
 SimpleCov.start
 

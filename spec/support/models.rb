@@ -1,15 +1,13 @@
 ActiveRecord::Base.establish_connection adapter: 'sqlite3', database: ':memory:'
 
 ActiveRecord::Schema.define do
-  create_table :streamline_events, id: false do |t|
-    t.uuid :id, primary_key: true
+  create_table :streamline_events do |t|
     t.string :name, null: false
     t.text :properties
     t.datetime :occurred_at, null: false
     t.references :target, polymorphic: true
   end
 
-  add_index :streamline_events, :id
   add_index :streamline_events, [:target_type, :target_id]
 end
 
