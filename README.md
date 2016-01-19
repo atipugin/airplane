@@ -30,7 +30,7 @@ $ gem install streamline
 
 ## Setup
 
-First of all, you have to select a [data store](#Data stores) for your events. Let's take ActiveRecord store for example:
+First of all, you have to select a [data store](#data-stores) for your events. Let's take ActiveRecord store for example:
 
 ```shell
 $ rails generate streamline:stores:active_record
