@@ -28,9 +28,39 @@ Or install it system-wide:
 $ gem install streamline
 ```
 
-## Usage
+## Setup
 
-...
+First of all, you have to select a [data store](#Data stores) for your events. Let's take ActiveRecord store for example:
+
+```shell
+$ rails generate streamline:stores:active_record
+```
+
+It will generate all neccessary files (a model and migration file in this case). 
+
+*Note: if you are going to use ActiveRecord store with MySQL or SQLite3 database, you need to add following line to your Gemfile:*
+
+```ruby
+gem 'activeuuid'
+```
+
+Next, you need to configure ActiveJob adapter (if you haven't done it yet). Streamline uses background jobs a lot and usage of ActiveJob allows us to support [as many queuing backends as possible](http://edgeguides.rubyonrails.org/active_job_basics.html#backends).
+
+Imagine your app already uses Sidekiq. Just add the following line to your `application.rb`:
+
+```ruby
+config.active_job.queue_adapter = :sidekiq
+```
+
+Then add `streamline` queue to your `sidekiq.yml`.
+
+You're almost done! It's time to set up handlers and track some events.
+
+## Data stores
+
+Streamline supports following event stores:
+
+- ActiveRecord (PostgreSQL, MySQL, SQLite etc)
 
 ## Contributing
 
